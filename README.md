@@ -23,8 +23,7 @@
 ├── demo.py                демонстрація перевірки числа
 ├── conftest.py            маркер unit для pytest
 ├── pyproject.toml
-├── Makefile
-└── pictures/
+└── Makefile
 ```
 
 ### Команди запуску
@@ -69,8 +68,6 @@ assert: Число має бути більшим за нуль!
 
 Правильне введення (`5`, `3.5`) повертає число. Для `-3` і `0` отримано `ValueError` «Число має бути більшим за нуль», для `abc` і порожнього рядка `ValueError` «Введено не число».
 
-![Результат demo.py](pictures/01_demo.png)
-
 ### Завдання 2. Тестування функцій
 
 Створив у [`text_utils.py`](text_utils.py) функції `count_symbols`, `divide` та ⭐ `count_vowels` (голосні латиниці та української: `аеєиіїоуюя`, без урахування регістру).
@@ -78,14 +75,11 @@ assert: Число має бути більшим за нуль!
 ```python
 VOWELS = set("аеєиіїоуюяaeiou")
 
-
 def count_symbols(text: str) -> int:
     return len(text)
 
-
 def count_vowels(text: str) -> int:
     return sum(1 for symbol in text.lower() if symbol in VOWELS)
-
 
 def divide(a, b):
     return a / b
@@ -107,7 +101,6 @@ import unittest
 
 from app import Figure
 
-
 class TestFigure(unittest.TestCase):
     def setUp(self) -> None:
         self.obj = Figure("квадрат", 5)
@@ -125,7 +118,6 @@ class TestFigure(unittest.TestCase):
     def test_invalid_length(self):
         with self.assertRaises(AssertionError):
             Figure("квадрат", 0)
-
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
@@ -255,10 +247,6 @@ Ran 32 tests in 0.005s
 OK
 ```
 
-![Тести до виправлення](pictures/02_tests_before.png)
-
-![Тести після виправлення](pictures/03_tests_after.png)
-
 Запуск `python test.py` (лише тести `Figure`):
 
 ```text
@@ -310,7 +298,6 @@ OK
 
 ```python
 from validation import check_positive_number
-
 
 def ask_number(prompt="Введіть число: "):
     return check_positive_number(input(prompt))
