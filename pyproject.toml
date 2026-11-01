@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "lab-testing-01"
+version = "0.1.0"
+description = "Лабораторна робота: загальне тестування та unittest"
+authors = ["Бейгул Володимир"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+pytest-cov = "*"
+coverage = "*"
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py", "test.py"]
+pythonpath = ["."]
+markers = [
+    "unit: модульні тести",
+    "integration: інтеграційні тести",
+]
+
+[tool.coverage.run]
+source = ["."]
+omit = ["test*.py", "conftest.py", "demo.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
